@@ -7,10 +7,10 @@ INT32 main(VOID) {
 
 	wlr_log_init(WLR_DEBUG, NULL);
 
-	Log(DEBUG, "initializing snowc server");
+	SNOWLOG(DEBUG, "initializing snowc server");
 
 	if (!SnowcServerInit(&Server)) {
-		Log(INFO, "encountered an error; exiting");
+		SNOWLOG(INFO, "encountered an error; exiting");
 		return 1;
 	}
 

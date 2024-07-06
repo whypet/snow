@@ -17,7 +17,7 @@
 #define NULLCHECK(Type, Value)                     \
 	do {                                           \
 		if ((Value) == NULL) {                     \
-			Log(ERROR, "failed to create " #Type); \
+			SNOWLOG(ERROR, "failed to create " #Type); \
 			SnowcServerFinish(Server);             \
 			return FALSE;                          \
 		}                                          \
@@ -101,13 +101,13 @@ SnowcServerRun(
 	)
 {
 	if (!wlr_backend_start(Server->Backend)) {
-		Log(ERROR, "failed to start wlr_backend");
+		SNOWLOG(ERROR, "failed to start wlr_backend");
 		return FALSE;
 	}
 
 	setenv("WAYLAND_DISPLAY", Server->Socket, TRUE);
 
-	Log(INFO, "running on \"WAYLAND_DISPLAY=%s\"", Server->Socket);
+	SNOWLOG(INFO, "running on \"WAYLAND_DISPLAY=%s\"", Server->Socket);
 
 	wl_display_run(Server->Display);
 
